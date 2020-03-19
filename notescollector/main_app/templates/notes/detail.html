@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1> Note Detail</h1>
+
+<div class="row">
+{% comment %} Note Details {% endcomment %}
+    <div class="col s6">
+        <div class="card {{ note.color }} lighten-3">
+            <div class="card-content">
+              <span class="card-title">{{ note.name }}</span>
+              <p>Color: {{ note.color }}</p>
+              <p>Description: {{ note.description }}</p>
+              <p>Number: {{ note.number }}</p>
+            </div>
+        </div>
+
+        <audio controls id="audio">
+            <source src="{% static 'audio/1.mp3' %}" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <h5>What color associates with this sound?</h5>
+        <p>Add your name and your association</p>
+    </div>
+
+  <div class="col s6">
+  {% comment %} Form to submit {% endcomment %}
+    <form action="{% url 'add_person' note.id %}" method="post">
+        {% csrf_token %}
+        {{ person_form.as_p }}
+        <input type="submit" class="btn" value="Add Color">
+    </form>
+{% comment %} Name and Associated color {% endcomment %}    
+    <table class="striped">
+        <thead>
+            <tr><th>Your name</th><th>Associated color</th></tr>
+        </thead>
+        <tbody>
+            {% for person in note.person_set.all %}
+               <tr>
+                <td>{{person.name}}</td>
+                <td class="{{person.color}} lighten-3">{{person.get_color_display}}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col s6">
+    <h4>Associated art with {{ note.name }} note:</h4>
+    {% if note.pictures.count %}
+      {% for picture in note.pictures.all %}
+       <div class="col s12 m6">
+              <div class="card">
+                <div class="card-image">
+                  <img src="{{ picture.link }}">
+                </div>
+
+                <div class="card-content">
+                    <span class="card-title">{{ picture.name }}</span>
+                </div>
+              </div>
+            </div>
+      {% endfor %}
+    {% else %}
+      <h5>Add a first art that associates with {{ note.name }} note </h5>
+    {% endif %}
+</div>
+
+
+{% comment %} Available Art {% endcomment %}
+<div class="col s6">
+    <h3>Available for association</h3>
+    {% if pictures.count %}
+      {% for picture in pictures.all %}
+        <div class="col s8 m5">
+            <div class="card">
+                <div class="card-image">
+                  <img src="{{ picture.link }}">
+                </div>
+                <div class="card-content">
+                    <span class="card-title">{{ picture.name }}</span>
+                </div>
+    
+                <div class="card-action">
+                    <form action="{% url 'assoc_picture' note.id picture.id %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="btn">Add</button>
+                    </form>
+              </div>
+            </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{cat.name}} Add a new art to the gallery</h5>
+    {% endif %}
+</div>
+
+<script>
+    let selectColor = document.getElementById('id_color');
+    M.FormSelect.init(selectColor);
+</script>
+
+{% endblock %}
+
