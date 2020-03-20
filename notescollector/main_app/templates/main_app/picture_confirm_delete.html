@@ -4,6 +4,7 @@
 <h1>Delete Picture</h1>
 <h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
 
+{% comment %} Confirmation of delete {% endcomment %}
 <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Yes" class="btn">
