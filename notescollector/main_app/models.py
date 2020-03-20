@@ -1,7 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
-# Create your models here.
+# Colors available for guest. I picked THESE, because Materialize can add them as a nice background color.
 COLORS = (
     ('red', 'Red'),
     ('pink', 'Pink'),
@@ -26,8 +27,7 @@ COLORS = (
     ('white', 'White')
 )
 
-# Any time we make a change we need to generate a new migration (makemigrations)
-
+# Picture (Art) model
 class Picture(models.Model):
     name = models.CharField('Title', max_length=200)
     link = models.CharField('Link', max_length=500)
@@ -37,8 +37,7 @@ class Picture(models.Model):
         return reverse('picture_detail', kwargs={'pk': self.id})
 
 
-
-# Inherits functionality from Django class Model
+# Note model
 class Note(models.Model):
     name = models.CharField(max_length=100)
     color = models.CharField(max_length=100)
@@ -50,7 +49,7 @@ class Note(models.Model):
     def __str__(self):
         return self.name
 
-
+# Person (Guest) model
 class Person(models.Model):
     name = models.CharField('Name', max_length=200)
     color = models.CharField(
