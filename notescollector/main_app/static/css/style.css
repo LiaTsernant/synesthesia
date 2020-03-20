@@ -5,20 +5,16 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Color of navbar */
 nav {
   background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
 }
 
+/* It allowes to keep navbar at very top and footer at very bottom. 
+Doesn't matter how much content the main section has footer and navbar will always be on place */
 main {
   flex: 1 0 auto;
 }
-/* h3, h4, h5 {
-  width: 100%;
-} */
-
-/* .content {
-  margin-top: 30px;
-} */
 
 footer {
   padding-top: 0;
@@ -54,8 +50,16 @@ img {
   object-fit: cover;
 }
 
-/* .s6 {
-  display: flex;
-  flex-wrap: wrap;
-  
-} */
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Size of the text on login and signup pages. Materialize stuff */
+.helptext {
+  font-size: 10px;
+}
+
+ul {
+  font-size: 10px;
+}
