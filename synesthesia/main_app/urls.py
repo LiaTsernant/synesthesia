@@ -38,11 +38,12 @@ urlpatterns = [
     # CREATE user
     path('accounts/signup', views.signup, name='signup'),
 
-    #SHOW user
-    # path('profile/<int:user_id>', views.show_profile, name="show_profile"),
+    #SHOW user and update
     path('profile/<int:user_id>/', views.profile, name="profile"),
 
 
-    # UPDATE user
-    # path('profile/<int:user_id>/update', views.update_profile, name="update_profile"),
+    # Delete user
+    path('profile/<int:user_id>/delete/', views.delete_profile, name="delete_profile"),
+    path('profile/<int:user_id>/confirm_delete/', views.confirm_delete_user, name="confirm_delete_user"),
+
 ]
