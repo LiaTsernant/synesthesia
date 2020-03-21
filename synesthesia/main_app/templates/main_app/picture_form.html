@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if object %}
+    {% comment %} If picture was passed here, this will display EDIT {% endcomment %}
+    <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+  {% else %}
+    {% comment %} If picture was not passed here, this will display 'ADD' {% endcomment %}
+    <h1>Add Picture</h1>
+  {% endif %}
+
+  {% comment %} Form with data adout picture that will be stored in DB {% endcomment %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Add" class="btn">
+  </form>
+
+{% endblock %}
