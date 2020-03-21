@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Note, Person, Picture
-from .forms import PersonForm
+from .forms import PersonForm, ProfileForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login
+from django.contrib.auth.models import User
 
 # ---------------------------------------------------------------------------------------------------- ABOUT AND HOME PAGES
 
@@ -98,3 +99,36 @@ def signup(request):
 
     return render(request, 'registration/signup.html', context)
 
+
+def show_profile(request, user_id):
+    # Finds my user
+    user = User.objects.get(id=user_id)
+    print(user)
+
+    user_form = UserChangeForm(request.POST, instance=user)
+
+    # Stores profile form <label for="id_location">Location City:</label></th><td><input type="text" name="location" value="San Francisco, CA" maxlength="200" required id="id_location">
+    profile_form = ProfileForm()
+    print(profile_form)
+
+    return render(request, 'registration/profile_form.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
+
+def update_profile(request, user_id):
+    if request.method == 'POST':
+        user_form = UserChangeForm(request.POST, instance=request.user)
+        print(user_form)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if (profile_form.is_valid() and user_form.is_valid()):
+            user_form.save()
+            profile_form.save()
+            return redirect('show_profile')
+    else:
+        user_form = UserChangeForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'registration/profile_form.html', {
+        'ures_form': user_form,
+        'profile_form': profile_form
+    })
