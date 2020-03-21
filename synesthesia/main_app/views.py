@@ -34,6 +34,18 @@ def notes_detail(request, note_id):
         'pictures': unassociated_pictures
     })
 
+# CREATE Note
+def new_note(request):
+    if request.method == 'POST':
+        form = NoteForm(request.POST)
+        if form.is_valid():
+            note = form.save()
+            return redirect('detail', note.id)
+    else:
+        form = NoteForm()
+    context = {'form': form }
+    return render(request, 'notes/note_form.html', context)
+
 # Add association between note and picture
 def assoc_picture(request, note_id, picture_id):
     Note.objects.get(id=note_id).pictures.add(picture_id)
