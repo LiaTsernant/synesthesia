@@ -37,7 +37,7 @@ def notes_detail(request, note_id):
         'pictures': unassociated_pictures
     })
 
-# CREATE Note
+# CREATE Note only if logged in
 @login_required
 def new_note(request):
     if request.method == 'POST':
@@ -81,17 +81,17 @@ def pictures_index(request):
 class PictureDetail(DetailView):
     model = Picture
 
-# CREATE picture
+# CREATE picture only if logged in
 class PictureCreate(LoginRequiredMixin, CreateView):
     model = Picture
     fields = '__all__'
 
-# UPDATE picture
+# UPDATE picture only if logged in
 class PictureUpdate(LoginRequiredMixin, UpdateView):
     model = Picture
     fields = ['name', 'link', 'description']
 
-# DELETE picture
+# DELETE picture only if logged in
 class PictureDelete(LoginRequiredMixin, DeleteView):
     model = Picture
     success_url = '/pictures/'
@@ -116,6 +116,7 @@ def signup(request):
 
 # ---------------------------------------------------------------------------------------------------------------------------
 
+#SHOW and UPDATE user only if logged in
 @login_required
 def profile(request, user_id):
     # print(request.user)
@@ -133,11 +134,13 @@ def profile(request, user_id):
         form = ProfileForm(instance=request.user)
     return render(request, 'user/profile_form.html', {'form': form})
 
+#Confirm deleting user only if logged in
 @login_required
 def confirm_delete_user(request, user_id):
     user = User.objects.get(id=user_id)
     return render(request, 'user/confirm_delete_user.html', {'user': user})
 
+# DELETE user only if logged in
 @login_required
 def delete_profile(request, user_id):
     if request.method == 'POST':

@@ -38,9 +38,8 @@ urlpatterns = [
     # CREATE user
     path('accounts/signup', views.signup, name='signup'),
 
-    #SHOW user and update
+    #SHOW user and UPDATE
     path('profile/<int:user_id>/', views.profile, name="profile"),
-
 
     # Delete user
     path('profile/<int:user_id>/delete/', views.delete_profile, name="delete_profile"),
