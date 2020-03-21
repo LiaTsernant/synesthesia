@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+  {% comment %} Form with data adout User that will be stored in DB {% endcomment %}
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <input type="submit" value="Update Profile" class="btn">
+    </form>
+    {% comment %} <a href="{% url 'pictures_delete' picture.id %}">Delete Profile</a> {% endcomment %}
+    <a href="#">Delete Profile</a>
+
+
+
+
+{% endblock %}
