@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # ---------------------------------------------------------------------------------------------------- ABOUT AND HOME PAGES
 
@@ -87,48 +88,68 @@ def signup(request):
     error_message = ''
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = ProfileForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('index')
         else:
             error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
+    form = ProfileForm()
     context = {'form': form, 'error_message': error_message}
 
     return render(request, 'registration/signup.html', context)
 
+# ---------------------------------------------------------------------------------------------------------------------------
 
-def show_profile(request, user_id):
-    # Finds my user
+# @login_required
+def profile(request, user_id):
+    # print(request.user)
     user = User.objects.get(id=user_id)
-    print(user)
 
-    user_form = UserChangeForm(request.POST, instance=user)
-
-    # Stores profile form <label for="id_location">Location City:</label></th><td><input type="text" name="location" value="San Francisco, CA" maxlength="200" required id="id_location">
-    profile_form = ProfileForm()
-    print(profile_form)
-
-    return render(request, 'registration/profile_form.html', {
-        'user_form': user_form,
-        'profile_form': profile_form
-    })
-
-def update_profile(request, user_id):
     if request.method == 'POST':
-        user_form = UserChangeForm(request.POST, instance=request.user)
-        print(user_form)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
-        if (profile_form.is_valid() and user_form.is_valid()):
-            user_form.save()
-            profile_form.save()
-            return redirect('show_profile')
+        form = ProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save()
+            print(f"USER IS {user}")
+            request.user = user
+
+        return redirect ('profile', user_id)
     else:
-        user_form = UserChangeForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'registration/profile_form.html', {
-        'ures_form': user_form,
-        'profile_form': profile_form
-    })
+        form = ProfileForm(instance=request.user)
+    return render(request, 'user/profile_form.html', {'form': form})
+
+
+
+# def show_profile(request, user_id):
+#     # Finds my user
+#     user = User.objects.get(id=user_id)
+#     print(user)
+
+#     user_form = UserChangeForm(request.POST, instance=user)
+
+#     # Stores profile form <label for="id_location">Location City:</label></th><td><input type="text" name="location" value="San Francisco, CA" maxlength="200" required id="id_location">
+#     profile_form = ProfileForm()
+#     print(profile_form)
+
+#     return render(request, 'user/profile_form.html', {
+#         'user_form': user_form,
+#         'profile_form': profile_form
+#     })
+
+# def update_profile(request, user_id):
+#     if request.method == 'POST':
+#         user_form = UserChangeForm(request.POST, instance=request.user)
+#         print(user_form)
+#         profile_form = ProfileForm(request.POST, instance=request.user.profile)
+#         if (profile_form.is_valid() and user_form.is_valid()):
+#             user_form.save()
+#             profile_form.save()
+#             return redirect('show_profile')
+#     else:
+#         user_form = UserChangeForm(request.POST, instance=request.user)
+#         profile_form = ProfileForm(instance=request.user.profile)
+#     return render(request, 'user/profile_form.html', {
+#         'ures_form': user_form,
+#         'profile_form': profile_form
+#     })
