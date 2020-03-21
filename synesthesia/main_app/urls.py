@@ -32,4 +32,10 @@ urlpatterns = [
     # -------------------------------------------------------------------------------- User
     # CREATE user
     path('accounts/signup', views.signup, name='signup'),
+
+    #SHOW user
+    path('profile/<int:user_id>', views.show_profile, name="show_profile"),
+
+    # UPDATE user
+    path('profile/<int:user_id>/update', views.update_profile, name="update_profile"),
 ]
