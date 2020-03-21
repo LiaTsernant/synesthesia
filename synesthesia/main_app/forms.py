@@ -15,5 +15,5 @@ class PersonForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = Profile
-        fields = ['location']
+        model = User
+        fields = ['username','first_name', 'last_name', 'email']
