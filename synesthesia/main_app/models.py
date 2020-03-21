@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Colors available for guest. I picked THESE, because Materialize can add them as a nice background color.
 COLORS = (
@@ -63,3 +65,23 @@ class Person(models.Model):
 
     def __str__(self):
         return f'{self.get_color_display()} for {self.name}'
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location = models.CharField(
+        'Location City', 
+        max_length=200,
+        default='San Francisco, CA'
+    )
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
+
+    def __str__(self):
+        return f"{self.user.username} from {self.location}"
