@@ -3,16 +3,17 @@
 {% block content %}
 
   {% if object %}
+    {% comment %} If picture was passed here, this will display EDIT {% endcomment %}
     <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
   {% else %}
+    {% comment %} If picture was not passed here, this will display 'ADD' {% endcomment %}
     <h1>Add Picture</h1>
   {% endif %}
-  <!-- Leaving the action empty makes the form post to the same url used to display it -->
+
+  {% comment %} Form with data adout picture that will be stored in DB {% endcomment %}
   <form action="" method="post">
-    <!-- Django requires the following for security purposes -->
     {% csrf_token %}
     <table>
-      <!-- Render the inputs inside of <tr>s & <td>s -->
       {{ form.as_table }}
     </table>
     <input type="submit" value="Add" class="btn">
