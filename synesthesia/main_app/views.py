@@ -147,38 +147,3 @@ def delete_profile(request, user_id):
         user = User.objects.get(id=user_id)
         user.delete()
     return redirect('home')
-
-
-
-# def show_profile(request, user_id):
-#     # Finds my user
-#     user = User.objects.get(id=user_id)
-#     print(user)
-
-#     user_form = UserChangeForm(request.POST, instance=user)
-
-#     # Stores profile form <label for="id_location">Location City:</label></th><td><input type="text" name="location" value="San Francisco, CA" maxlength="200" required id="id_location">
-#     profile_form = ProfileForm()
-#     print(profile_form)
-
-#     return render(request, 'user/profile_form.html', {
-#         'user_form': user_form,
-#         'profile_form': profile_form
-#     })
-
-# def update_profile(request, user_id):
-#     if request.method == 'POST':
-#         user_form = UserChangeForm(request.POST, instance=request.user)
-#         print(user_form)
-#         profile_form = ProfileForm(request.POST, instance=request.user.profile)
-#         if (profile_form.is_valid() and user_form.is_valid()):
-#             user_form.save()
-#             profile_form.save()
-#             return redirect('show_profile')
-#     else:
-#         user_form = UserChangeForm(request.POST, instance=request.user)
-#         profile_form = ProfileForm(instance=request.user.profile)
-#     return render(request, 'user/profile_form.html', {
-#         'ures_form': user_form,
-#         'profile_form': profile_form
-#     })
