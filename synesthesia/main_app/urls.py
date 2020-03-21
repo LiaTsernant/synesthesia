@@ -9,9 +9,14 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     # INDEX notes
     path('notes/', views.notes_index, name='index'),
-    # SHOW note
-    path('notes/<int:note_id>', views.notes_detail, name='detail'),
-
+    # CREATE note
+    path('notes/new/', views.new_note, name='new_note'),
+    # # SHOW note
+    # path('notes/<int:note_id>', views.notes_detail, name='detail'),
+    # # UPDATE note
+    # path('notes/<int:note_id>/edit', views.notes_update, name='note_update'),
+    # # DELETE note
+    # path('notes/<int:note_id>/delete', views.notes_delete, name='note_delete'),
     # -------------------------------------------------------------------------------- Guest
 
     # CREATE guest's record with his  name and color
