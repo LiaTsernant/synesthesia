@@ -36,13 +36,13 @@ urlpatterns = [
 
     # -------------------------------------------------------------------------------- User
     # CREATE user
-    path('accounts/signup', views.signup, name='signup'),
+    path('signup', views.signup, name='signup'),
 
     #SHOW user and UPDATE
-    path('profile/<int:user_id>/', views.profile, name="profile"),
+    path('<str:username>/', views.profile, name="profile"),
 
     # Delete user
-    path('profile/<int:user_id>/delete/', views.delete_profile, name="delete_profile"),
-    path('profile/<int:user_id>/confirm_delete/', views.confirm_delete_user, name="confirm_delete_user"),
+    path('<str:username>/delete/', views.delete_profile, name="delete_profile"),
+    path('<str:username>/confirm_delete', views.confirm_delete_user, name="confirm_delete_user"),
 
 ]

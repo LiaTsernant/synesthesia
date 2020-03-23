@@ -102,15 +102,15 @@ def signup(request):
     error_message = ''
 
     if request.method == 'POST':
-        form = ProfileForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        user_form = UserCreationForm(request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
             login(request, user)
             return redirect('index')
         else:
             error_message = 'Invalid sign up - try again'
-    form = ProfileForm()
-    context = {'form': form, 'error_message': error_message}
+    user_form = UserCreationForm(request.POST)
+    context = {'user_form': user_form ,'error_message': error_message}
 
     return render(request, 'registration/signup.html', context)
 
@@ -118,32 +118,39 @@ def signup(request):
 
 #SHOW and UPDATE user only if logged in
 @login_required
-def profile(request, user_id):
-    # print(request.user)
-    user = User.objects.get(id=user_id)
+def profile(request, username):
+    error_message = ''
+    success_message = ''
+    user = User.objects.filter(username=username).first()
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=request.user)
-        if form.is_valid():
-            user = form.save()
-            print(f"USER IS {user}")
-            request.user = user
 
-        return redirect ('profile', user_id)
+        if form.is_valid():
+            user = form.save(commit=False)
+            if User.objects.filter(email=user.email).first():
+                error_message = 'Email already exist'
+                context = {'form':form, 'error_message': error_message, 'success_message': success_message}
+                return render(request, 'user/profile_form.html', context)
+            user = form.save()
+            request.user = user
+            success_message = 'Your profile has been updated!'
+            context = {'form':form, 'error_message': error_message, 'success_message': success_message}
+            return render(request, 'user/profile_form.html', context)
     else:
         form = ProfileForm(instance=request.user)
     return render(request, 'user/profile_form.html', {'form': form})
 
 #Confirm deleting user only if logged in
 @login_required
-def confirm_delete_user(request, user_id):
-    user = User.objects.get(id=user_id)
+def confirm_delete_user(request, username):
+    user = User.objects.filter(username=username)[0]
     return render(request, 'user/confirm_delete_user.html', {'user': user})
 
 # DELETE user only if logged in
 @login_required
-def delete_profile(request, user_id):
+def delete_profile(request, username):
     if request.method == 'POST':
-        user = User.objects.get(id=user_id)
+        user = User.objects.filter(username=username).first()
         user.delete()
     return redirect('home')

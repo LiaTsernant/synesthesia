@@ -63,3 +63,7 @@ p {
 ul {
   font-size: 10px;
 }
+
+.error {
+  color: red;
+}
