@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Note, Person, Picture
-from .forms import PersonForm, ProfileForm
+from .forms import PersonForm, ProfileForm, ArtForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -66,10 +66,6 @@ def add_person(request, note_id):
 
 # ---------------------------------------------------------------------------------------------------- PICTURE CRUD
 
-# INDEX pictures class View
-class PictureList(ListView):
-    model = Picture
-
 # INDEX picture manual interpretation of class view.
 def pictures_index(request):
     pics = Picture.objects.all()
@@ -78,23 +74,49 @@ def pictures_index(request):
     })
 
 # SHOW picture
-class PictureDetail(DetailView):
-    model = Picture
+def art_detail(request, art_name):
+    art = Picture.objects.filter(name__contains=art_name).first()
+    return render(request, 'main_app/picture_detail.html', { 'picture': art })
 
 # CREATE picture only if logged in
-class PictureCreate(LoginRequiredMixin, CreateView):
-    model = Picture
-    fields = '__all__'
+# @login_required
+def create_art(request):
+    if request.method == 'POST':
+        form = ArtForm(request.POST)
+        if form.is_valid():
+            art = form.save(commit=False)
+            art.user = request.user
+            art.save()
+            return redirect('pictures_index')
+    else:
+        form = ArtForm()
+        return render(request, 'main_app/picture_form.html', { 'form': form })
 
 # UPDATE picture only if logged in
-class PictureUpdate(LoginRequiredMixin, UpdateView):
-    model = Picture
-    fields = ['name', 'link', 'description']
+def update_art(request, art_name):
+    art = Picture.objects.filter(name__contains=art_name).first()
+    if request.method == "POST":
+        form = ArtForm(request.POST, instance=art)
+        if form.is_valid():
+            form.save()
+            return redirect ('picture_detail', art.name)
+    else: 
+        form = ArtForm(instance=art)
+    return render(request, 'main_app/picture_form.html', { 'form': form })
+
+def confirm_delete(request, art_name):
+    art = Picture.objects.filter(name__contains=art_name).first()
+    return render(request, 'main_app/picture_confirm_delete.html', { 'picture': art })
+
 
 # DELETE picture only if logged in
-class PictureDelete(LoginRequiredMixin, DeleteView):
-    model = Picture
-    success_url = '/pictures/'
+def delete_art(request, art_name):
+    art = Picture.objects.filter(name__contains=art_name).first()
+    print(art.name)
+    if request.method == 'POST':
+        art = Picture.objects.filter(name__contains=art_name).first()
+        art.delete()
+    return redirect('about')
 
 # ---------------------------------------------------------------------------------------------------- Authorization
 
