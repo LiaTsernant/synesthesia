@@ -17,8 +17,8 @@
           
           {% comment %} Links for edit and delete picture {% endcomment %}
           <div class="card-action">
-              <a href="{% url 'pictures_update' picture.id %}">Edit</a>
-              <a href="{% url 'pictures_delete' picture.id %}">Delete</a>
+              <a href="{% url 'pictures_update' picture.name %}">Edit</a>
+              <a href="{% url 'pictures_confirm_delete' picture.name %}">Delete</a>
           </div>
         </div>
       </div>
