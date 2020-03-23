@@ -118,9 +118,9 @@ def signup(request):
 
 #SHOW and UPDATE user only if logged in
 @login_required
-def profile(request, user_id):
+def profile(request, username):
     # print(request.user)
-    user = User.objects.get(id=user_id)
+    user = User.objects.filter(username=username)[0]
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=request.user)
@@ -129,21 +129,21 @@ def profile(request, user_id):
             print(f"USER IS {user}")
             request.user = user
 
-        return redirect ('profile', user_id)
+        return redirect ('profile', username)
     else:
         form = ProfileForm(instance=request.user)
     return render(request, 'user/profile_form.html', {'form': form})
 
 #Confirm deleting user only if logged in
 @login_required
-def confirm_delete_user(request, user_id):
-    user = User.objects.get(id=user_id)
+def confirm_delete_user(request, username):
+    user = User.objects.filter(username=username)[0]
     return render(request, 'user/confirm_delete_user.html', {'user': user})
 
 # DELETE user only if logged in
 @login_required
-def delete_profile(request, user_id):
+def delete_profile(request, username):
     if request.method == 'POST':
-        user = User.objects.get(id=user_id)
+        user = User.objects.filter(username=username)[0]
         user.delete()
     return redirect('home')
