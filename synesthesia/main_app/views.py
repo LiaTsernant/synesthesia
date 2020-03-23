@@ -103,8 +103,6 @@ def signup(request):
 
     if request.method == 'POST':
         user_form = UserCreationForm(request.POST)
-        # profile_form = ProfileForm(request.POST)
-
         if user_form.is_valid():
             user = user_form.save()
             login(request, user)
@@ -112,7 +110,6 @@ def signup(request):
         else:
             error_message = 'Invalid sign up - try again'
     user_form = UserCreationForm(request.POST)
-    # profile_form = ProfileForm(request.POST)
     context = {'user_form': user_form ,'error_message': error_message}
 
     return render(request, 'registration/signup.html', context)
@@ -122,14 +119,15 @@ def signup(request):
 #SHOW and UPDATE user only if logged in
 @login_required
 def profile(request, username):
-    user = User.objects.filter(username=username)[0]
+    user = User.objects.filter(username=username).first()
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=request.user)
         if form.is_valid():
+            print(form)
+
             user = form.save()
             request.user = user
-
         return redirect ('profile', user.username)
     else:
         form = ProfileForm(instance=request.user)
@@ -145,6 +143,6 @@ def confirm_delete_user(request, username):
 @login_required
 def delete_profile(request, username):
     if request.method == 'POST':
-        user = User.objects.filter(username=username)[0]
+        user = User.objects.filter(username=username).first()
         user.delete()
     return redirect('home')
