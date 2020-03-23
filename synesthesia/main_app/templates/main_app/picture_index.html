@@ -4,7 +4,7 @@
 <h1>All Pictures</h1>
 
 {% for picture in pictures %}
-    <a href="{% url 'picture_detail' picture.id %}">
+    <a href="{% url 'picture_detail' picture.name %}">
       <div class="row">
         <div class="col s11 m9">
           <div class="card">
