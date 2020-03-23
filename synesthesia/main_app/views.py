@@ -119,16 +119,25 @@ def signup(request):
 #SHOW and UPDATE user only if logged in
 @login_required
 def profile(request, username):
+    error_message = ''
+    success_message = ''
     user = User.objects.filter(username=username).first()
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=request.user)
+
         if form.is_valid():
-            print(form)
+            user = form.save(commit=False)
+            if User.objects.filter(email=user.email).first():
+                error_message = 'Email already exist'
+                context = {'form':form, 'error_message': error_message, 'success_message': success_message}
+                return render(request, 'user/profile_form.html', context)
 
             user = form.save()
             request.user = user
-        return redirect ('profile', user.username)
+            success_message = 'Your profile has been updated!'
+            context = {'form':form, 'error_message': error_message, 'success_message': success_message}
+            return render(request, 'user/profile_form.html', context)
     else:
         form = ProfileForm(instance=request.user)
     return render(request, 'user/profile_form.html', {'form': form})
