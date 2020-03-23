@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Note, Person, Picture
-from .forms import PersonForm
+from .forms import PersonForm, ProfileForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # ---------------------------------------------------------------------------------------------------- ABOUT AND HOME PAGES
 
@@ -34,7 +37,8 @@ def notes_detail(request, note_id):
         'pictures': unassociated_pictures
     })
 
-# CREATE Note
+# CREATE Note only if logged in
+@login_required
 def new_note(request):
     if request.method == 'POST':
         form = NoteForm(request.POST)
@@ -77,18 +81,18 @@ def pictures_index(request):
 class PictureDetail(DetailView):
     model = Picture
 
-# CREATE picture
-class PictureCreate(CreateView):
+# CREATE picture only if logged in
+class PictureCreate(LoginRequiredMixin, CreateView):
     model = Picture
     fields = '__all__'
 
-# UPDATE picture
-class PictureUpdate(UpdateView):
+# UPDATE picture only if logged in
+class PictureUpdate(LoginRequiredMixin, UpdateView):
     model = Picture
     fields = ['name', 'link', 'description']
 
-# DELETE picture
-class PictureDelete(DeleteView):
+# DELETE picture only if logged in
+class PictureDelete(LoginRequiredMixin, DeleteView):
     model = Picture
     success_url = '/pictures/'
 
@@ -98,15 +102,48 @@ def signup(request):
     error_message = ''
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = ProfileForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('index')
         else:
             error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
+    form = ProfileForm()
     context = {'form': form, 'error_message': error_message}
 
     return render(request, 'registration/signup.html', context)
 
+# ---------------------------------------------------------------------------------------------------------------------------
+
+#SHOW and UPDATE user only if logged in
+@login_required
+def profile(request, user_id):
+    # print(request.user)
+    user = User.objects.get(id=user_id)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save()
+            print(f"USER IS {user}")
+            request.user = user
+
+        return redirect ('profile', user_id)
+    else:
+        form = ProfileForm(instance=request.user)
+    return render(request, 'user/profile_form.html', {'form': form})
+
+#Confirm deleting user only if logged in
+@login_required
+def confirm_delete_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    return render(request, 'user/confirm_delete_user.html', {'user': user})
+
+# DELETE user only if logged in
+@login_required
+def delete_profile(request, user_id):
+    if request.method == 'POST':
+        user = User.objects.get(id=user_id)
+        user.delete()
+    return redirect('home')
