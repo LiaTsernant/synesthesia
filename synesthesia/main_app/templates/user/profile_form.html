@@ -8,6 +8,6 @@
         {{ form.as_table }}
       </table>
       <input type="submit" value="Update Profile" class="btn">
-      <a href="{% url 'confirm_delete_user' user.id %}">Delete Profile</a>
+      <a href="{% url 'confirm_delete_user' user.username %}">Delete Profile</a>
     </form>
 {% endblock %}
