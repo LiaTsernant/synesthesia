@@ -3,11 +3,48 @@
 <h1>Log In<h1>
 
 {% comment %} Form with all user's data to login {% endcomment %}
-<form method="post" action="{% url 'login' %}">
+{% comment %} <form method="post" action="{% url 'login' %}">
+  <div class="form-group">
   {% csrf_token %}
-  {{ form.as_p }}
+  {{ form.as_table }}
+  </div>
   <input type="submit" class="btn" value="login">
   <input type="hidden" name="next" value="{{ next }}">
+</form> {% endcomment %}
+
+
+{% comment %} 
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="username" class="form-control" id="exampleInputEmail1" >
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <input type="submit" class="btn" value="login">
+  <input type="hidden" name="next" value="{{ next }}">
+</form> {% endcomment %}
+
+
+
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+{% for field in form.fields %}
+<label>{{ field.label }}</label>
+
+{% if field.errors %}
+  <div class="alert alert-danger alert-sm form_alert">{{ field.errors }}</div>
+{% endif %}
+<br>
+{% endfor %}
 </form>
 
 {% endblock content %}
