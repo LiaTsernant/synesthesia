@@ -29,10 +29,12 @@ urlpatterns = [
     # -------------------------------------------------------------------------------- Picture
 
     path('pictures/', views.pictures_index, name="pictures_index"),
-    path('pictures/<int:pk>/', views.PictureDetail.as_view(), name="picture_detail"),
-    path('pictures/create/', views.PictureCreate.as_view(), name="pictures_create"),
-    path('pictures/<int:pk>/update/', views.PictureUpdate.as_view(), name="pictures_update"),
-    path('pictures/<int:pk>/delete/', views.PictureDelete.as_view(), name="pictures_delete"),
+    path('pictures/<str:art_name>/', views.art_detail, name="picture_detail"),
+    path('pictures/create', views.create_art, name="pictures_create"),
+    path('pictures/<str:art_name>/update', views.update_art, name="pictures_update"),
+    path('pictures/<str:art_name>/confirm_delete/', views.confirm_delete, name="pictures_confirm_delete"),
+
+    path('pictures/<str:art_name>/delete/', views.delete_art, name="pictures_delete"),
 
     # -------------------------------------------------------------------------------- User
     # CREATE user
