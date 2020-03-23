@@ -132,7 +132,6 @@ def profile(request, username):
                 error_message = 'Email already exist'
                 context = {'form':form, 'error_message': error_message, 'success_message': success_message}
                 return render(request, 'user/profile_form.html', context)
-
             user = form.save()
             request.user = user
             success_message = 'Your profile has been updated!'
