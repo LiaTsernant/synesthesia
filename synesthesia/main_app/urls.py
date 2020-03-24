@@ -12,7 +12,7 @@ urlpatterns = [
     # CREATE note
     path('notes/new/', views.new_note, name='new_note'),
     # # SHOW note
-    # path('notes/<int:note_id>', views.notes_detail, name='detail'),
+    path('notes/<int:note_id>', views.notes_detail, name='detail'),
     # # UPDATE note
     # path('notes/<int:note_id>/edit', views.notes_update, name='note_update'),
     # # DELETE note
