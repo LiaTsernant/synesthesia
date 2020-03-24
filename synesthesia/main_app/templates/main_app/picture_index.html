@@ -5,20 +5,18 @@
 
 <div class="container">
   {% for picture in pictures %}
-    <a href="{% url 'picture_detail' picture.id %}">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-6 mt-5">
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <a href="{% url 'picture_detail' picture.name %}">
           <div class="card" id="gallery">
-            <img src="{{picture.link}}" class="card-img-top" alt="...">
+            <img src="{{picture.link}}" class="card-img-top" alt="{{picture.description}}">
             <div class="card-body">
               <h5 class="card-title">{{picture.name}}</h5>
-              <p class="card-text">{{picture.description}}</p>
-              <a href="#" class="btn btn-primary box">EDIT</a>
             </div>
           </div>
-        </div>
+        </a>
       </div>
-    </a>
+    </div>
   {% endfor %}
 </div>
 {% endblock %}
