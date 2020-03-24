@@ -78,6 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'synesthesia',
+        'USER': 'postgres',
+        'PASSWORD': 'Postgres2019',
+        'HOST': 'localhost',
     }
 }
 
