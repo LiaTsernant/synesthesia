@@ -8,7 +8,7 @@
       <img src="{{picture.link}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{picture.name}}</h5>
-        <p class="card-text">{{picture.description}}</p>
+        <p class="card-text card-text animated fadeInUp callToAction">{{picture.description}}</p>
         <a href="{% url 'pictures_update' picture.name %}" class="btn btn-primary box">EDIT</a>
         <a href="{% url 'pictures_confirm_delete' picture.name %}" class="btn btn-primary box">Delete</a>
       </div>
