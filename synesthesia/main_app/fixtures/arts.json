@@ -1,0 +1,34 @@
+[
+    {
+        "model": "main_app.picture",
+        "pk": 1,
+        "fields": {
+            "name": "Bright Orange",
+            "link": "images/art_6",
+            "description": "A nice and funny orange art",
+            "user": 1
+        }
+    },
+
+    {
+        "model": "main_app.picture",
+        "pk": 2,
+        "fields": {
+            "name": "Sky Blue",
+            "link": "images/art_5",
+            "description": "Very calm blue",
+            "user": 1
+        }
+    }, 
+
+    {
+        "model": "main_app.picture",
+        "pk": 3,
+        "fields": {
+            "name": "Violet",
+            "link": "images/art_4",
+            "description": "Amazing and deep",
+            "user": 1
+        }
+    }
+]
