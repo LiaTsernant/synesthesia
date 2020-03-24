@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Delete User</h1>
+
+  <div class="container">
+      <div class="row mt-5">
+        <h4>Are you sure you want to delete <span class="text-info">{{ user }}</span>?</h4>
+          <div class="col-md-12">
+              <form action="{% url 'delete_profile' user.username %}" method="POST">
+                {% csrf_token %}
+                <div id="confirm">
+                    <div>
+                        <a href="{% url 'profile' user.username %}">Cancel</a>
+                        <input type="submit" value="Delete" class="btn box">
+                    </div>
+                </div>
+              </form> 
+          </div>
+      </div>
+  </div>
+
+{% endblock %}

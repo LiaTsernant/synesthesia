@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>About</h1>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6 col-sm-4">
+            <div class="card" id="name">
+              <img src="{% static "images/angel.jpg"%}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Angel Rodriguez</h5>
+                <p class="card-text animated fadeInUp callToAction">Soccer aficionado and fry connoisseur. Currently surviving an apocalypse while learning python.<hr>
+                    "My code carries with it the message of pain" -!Frida Kahlo
+                </p>
+              </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4">
+            <div class="card" id="name">
+              <img src="{% static "images/lia.jpg"%}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Lia Tsernant</h5>
+                <p class="card-text animated fadeInUp callToAction"> A software engineer with experience in classical music. <hr>
+                    "I wish one day I would debug a debugger."</p>
+            </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4">
+            <div class="card" id="name">
+              <img src="{% static "images/Jesus.jpg"%}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Jesus Quezada</h5>
+                <p class="card-text animated fadeInUp callToAction">Just a guy honing the craft of Software Development.
+                    I only ask you, to not tell the IRS about the applications I'm secretly building. Just kidding?<hr>
+                    "You work on commission right?... Big Mistake! Big! Huge!"
+                    Julia Roberts as Miss Vivian Ward (Pretty Woman)
+                 </p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

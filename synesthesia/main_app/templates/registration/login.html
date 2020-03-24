@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Log In<h1>
+
+ 
+<form id="loginSignup" method="post" action="{% url 'login' %}">
+  <div class="form-group">
+  {% csrf_token %}
+  {{ form.as_p }}
+  </div>
+  <input type="submit" class="btn btn-primary box" value="login">
+  <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+
+{% endblock content %}

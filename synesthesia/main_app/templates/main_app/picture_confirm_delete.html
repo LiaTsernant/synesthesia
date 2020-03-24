@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Delete Picture</h1>
+<div class="container">
+    <div class="row mt-5">
+        <h4>Are you sure you want to delete <span class="text-info">{{ picture.name }}</span>?</h4>
+
+        <div class="col-md-12">
+            <form action="{% url 'pictures_delete' picture.name %}" method="POST">
+                {% csrf_token %}
+                <div id="confirm">
+                    <div>
+                        <a href="{% url 'picture_detail' picture.name %}">Cancel</a>
+                        <input type="submit" value="Yes" class="box">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,92 @@
+[
+    {
+        "model": "main_app.note",
+        "pk": 1,
+        "fields": {
+            "name": "C(Do)",
+            "color": "brown",
+            "background": "images/brown.png",
+            "description": "First of 7 notes",
+            "number": 1,
+            "pictures": []
+        }
+    },
+
+    {
+        "model": "main_app.note",
+        "pk": 2,
+        "fields": {
+            "name": "D(Re)",
+            "color": "green",
+            "background": "images/green.png", 
+            "description": "Second of 7 notes",
+            "number": 2,
+            "pictures": []
+        }
+    }, 
+
+    {
+        "model": "main_app.note",
+        "pk": 3,
+        "fields": {
+            "name": "E(Mi)",
+            "color": "red",
+            "background": "images/red.png",
+            "description": "Third of 7 notes",
+            "number": 3,
+            "pictures": []
+        }
+    },
+
+    {
+        "model": "main_app.note",
+        "pk": 4,
+        "fields": {
+            "name": "F(Fa)",
+            "color": "yellow",
+            "background": "images/yellow.png",
+            "description": "Fourth of 7 notes",
+            "number": 4,
+            "pictures": []
+        }
+    },
+
+    {
+        "model": "main_app.note",
+        "pk": 5,
+        "fields": {
+            "name": "G(Sol)",
+            "color": "blue",
+            "background": "images/blue.png",
+            "description": "Fifth of 7 notes",
+            "number": 5,
+            "pictures": []
+        }
+    },
+
+    {
+        "model": "main_app.note",
+        "pk": 6,
+        "fields": {
+            "name": "A(La)",
+            "color": "orange",
+            "background": "images/orange.png",
+            "description": "Sixth of 7 notes",
+            "number": 6,
+            "pictures": []
+        }
+    }, 
+
+    {
+        "model": "main_app.note",
+        "pk": 7,
+        "fields": {
+            "name": "H(Si)",
+            "color": "gray",
+            "background": "images/gray.png",
+            "description": "Seventh of 7 notes",
+            "number": 7,
+            "pictures": []
+        }
+    }
+]
