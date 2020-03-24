@@ -1,69 +1,86 @@
+
 body {
-  display: flex;
   min-height: 100vh;
+  width: 100%;
+  display: flex;
   flex-direction: column;
-  font-family: 'Open Sans', sans-serif;
 }
 
-/* Color of navbar */
-nav {
-  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
-}
-
-/* It allowes to keep navbar at very top and footer at very bottom. 
-Doesn't matter how much content the main section has footer and navbar will always be on place */
 main {
+  padding-top: 10px;
   flex: 1 0 auto;
 }
 
+/* NAV BAR */
+nav {
+  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+  width: 100%;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.tab {
+  padding-right: 15px;
+  
+}
+
+nav a {
+  color: white;
+}
+
+.tab :hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* FOOTER */
 footer {
-  padding-top: 0;
+  flex: 0 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   text-align: center;
-  background-image: linear-gradient(260deg,  #c16ecf 100%, #2376ae 0);
+  background-image: linear-gradient(260deg,  #C16ECF 100%, #2376AE 0);
 }
 
-.copyright {
-  width: 100%
-}
-
-a {
-  color: black;
-  margin-left: 15px;
-}
-
-nav a:hover {
-  text-shadow:#ffffff 1px 0 5px;
-  color: white;
-  text-decoration: none;
-}
-
-#audio {
+#copyright {
   width: 100%;
-  border-radius: 4px;
+  padding: 10px 0;
+  color: white;
 }
 
-img {
-  width: 400px;
-  height: 200px;
-  object-fit: cover;
+/* ART INDEX */
+#index {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: row;
 }
 
-p {
-  margin-top: 10px;
-  margin-bottom: 10px;
+form {
+  margin-top: 50px;
 }
 
-/* Size of the text on login and signup pages. Materialize stuff */
-.helptext {
-  font-size: 10px;
+form #id_username, #id_password, #id_password1, #id_password2, #id_name, #id_link, #id_description, #id_first_name, #id_last_name, #id_email {
+  width: 100%;
 }
 
-ul {
-  font-size: 10px;
+form p {
+  font-size: 20px;
 }
 
-.error {
-  color: red;
+.box {
+  background-color: #C16ECF;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid white;
+  padding: 8px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
 }

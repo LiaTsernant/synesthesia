@@ -2,12 +2,15 @@
 {% block content %}
 <h1>Log In<h1>
 
-{% comment %} Form with all user's data to login {% endcomment %}
+ 
 <form method="post" action="{% url 'login' %}">
+  <div class="form-group">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" class="btn" value="login">
+  </div>
+  <input type="submit" class="btn box" value="login">
   <input type="hidden" name="next" value="{{ next }}">
 </form>
+
 
 {% endblock content %}
