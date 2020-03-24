@@ -3,34 +3,18 @@
 {% block content %}
 <h1>Notes List</h1>
 
-{% comment %} {% for note in notes %}
-<a href="{% url 'detail' note.id %}">
-  <div class="card {{ note.color }} lighten-3">
-    <div class="card-content">
-      <span class="card-title">{{ note.name }}</span>
-      <p>Color: {{ note.color }}</p>
-      <p>Description: {{ note.description }}</p>
-      <p>Number: {{ note.number }}</p>
-    </div>
-  </div>
-</a>
-{% endfor %}
-
-{% endblock %} {% endcomment %}
-
 {% for note in notes %}
 <a href="{% url 'detail' note.id %}">
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center mb-5">
     <div class="col-md-12 mt-5">
-      <div class="card-content">
+      <div class="card-content" style="background-color: {{note.color}}; border-radius: 15px; opacity: 0.9">
         <div class="card-body text-body" >
-        <img src="{% static note.background %}" >
-          <div class="card-img-overlay">
-            <span class="card-title">{{note.name}}</span>
-            <p>Color: {{ note.color }}</p>
-            <p>Description: {{ note.description }}</p>
-            <p>Number: {{ note.number }}</p>
-          </div>
+            <div class="ml-4 mt-4">
+              <span class="card-title">{{note.name}}</span>
+              <p>Color: {{ note.color }}</p>
+              <p>Description: {{ note.description }}</p>
+              <p>Number: {{ note.number }}</p>
+            </div>
         </div>
       </div>
     </div>
