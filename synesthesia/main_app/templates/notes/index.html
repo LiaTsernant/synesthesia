@@ -25,10 +25,12 @@
       <div class="card-content">
         <div class="card-body text-body" >
         <img src="{% static note.background %}" >
+          <div class="card-img-overlay">
             <span class="card-title">{{note.name}}</span>
             <p>Color: {{ note.color }}</p>
             <p>Description: {{ note.description }}</p>
             <p>Number: {{ note.number }}</p>
+          </div>
         </div>
       </div>
     </div>
