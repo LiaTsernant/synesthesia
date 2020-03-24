@@ -45,6 +45,7 @@ class Picture(models.Model):
 class Note(models.Model):
     name = models.CharField(max_length=100)
     color = models.CharField(max_length=100)
+    background = models.TextField(max_length=1000, default='NONE')
     description = models.TextField(max_length=250)
     number = models.IntegerField()
     pictures = models.ManyToManyField(Picture)
