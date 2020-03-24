@@ -75,6 +75,10 @@ option {
 
 }
 
+#landingLogo{
+  height: 3%;
+  width: 3%;
+}
 /* FOOTER */
 footer {
   flex: 0 0 auto;
