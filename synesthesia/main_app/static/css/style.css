@@ -75,6 +75,10 @@ option {
 
 }
 
+#landingLogo{
+  height: 3%;
+  width: 3%;
+}
 /* FOOTER */
 footer {
   flex: 0 0 auto;
@@ -175,4 +179,10 @@ button a {
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  #landingLogo{
+    display: none;
+  }
 }
