@@ -1,4 +1,3 @@
-
 body {
   min-height: 100vh;
   width: 100%;
@@ -32,6 +31,29 @@ nav a {
   color: white;
   cursor: pointer;
   text-decoration: none;
+}
+
+
+.welcome{
+  animation-delay: 1s;
+  margin-top: 3rem;
+}
+
+.spanSyn{
+  background: -webkit-linear-gradient(
+    260deg, #2376ae 0%, #c16ecf 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.mainText{
+  line-height: 2;
+}
+
+.callToAction{
+  text-shadow: 1px 1px 12px #c16ecf;
 }
 
 /* FOOTER */
