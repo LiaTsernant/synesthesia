@@ -180,3 +180,9 @@ button a {
   transition: 0.25s;
   cursor: pointer;
 }
+
+@media (max-width: 1200px) {
+  #landingLogo{
+    display: none;
+  }
+}
