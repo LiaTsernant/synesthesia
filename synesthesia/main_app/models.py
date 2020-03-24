@@ -34,6 +34,8 @@ class Picture(models.Model):
     name = models.CharField('Title', max_length=200)
     link = models.CharField('Link', max_length=500)
     description = models.TextField(max_length=1000)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def get_absolute_url(self):
         return reverse('picture_detail', kwargs={'pk': self.id})
