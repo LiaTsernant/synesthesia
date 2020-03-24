@@ -9,24 +9,21 @@ COLORS = (
     ('red', 'Red'),
     ('pink', 'Pink'),
     ('purple', 'Purple'),
-    ('deep-purple', 'Deep-Purple'),
     ('indigo', 'Indigo'),
     ('blue', 'Blue'),
-    ('light-blue', 'Light Blue'),
+    ('lightblue', 'Light Blue'),
     ('cyan', 'Cyan'),
     ('teal', 'Teal'),
     ('green', 'Green'),
-    ('light-green', 'Light-Green'),
+    ('lightgreen', 'Light-Green'),
     ('lime', 'Lime'),
     ('yellow', 'Yellow'),
     ('amber', 'Amber'),
     ('orange', 'Orange'),
-    ('deep-orange', 'Deep Orange'),
+    ('orangered', 'Deep Orange'),
     ('brown', 'Brown'),
     ('grey', 'Grey'),
-    ('blue-grey', 'Blue Grey'),
     ('black', 'Black'),
-    ('white', 'White')
 )
 
 # Picture (Art) model
