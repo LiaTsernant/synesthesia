@@ -24,6 +24,7 @@ nav {
 
 nav a {
   color: white;
+  margin: 5px
 }
 
 .tab a:hover {
@@ -60,6 +61,12 @@ form {
   margin-top: 50px;
 }
 
+#confirm {
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+
 form #id_username, #id_password, #id_password1, #id_password2, #id_name, #id_link, #id_description, #id_first_name, #id_last_name, #id_email {
   width: 100%;
 }
@@ -72,6 +79,21 @@ p label {
   font-size: 15px;
 }
 
+
+#gallery img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+button a {
+  color: white;
+}
+
+.helptext {
+  font-size: 10px;
+}
+
 .error {
   font-size: 10px;
   padding: 0px;
@@ -79,6 +101,13 @@ p label {
   margin-bottom: 0;
   color: orangered;
 }
+
+#name img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
 
 .box {
   background-color: #C16ECF;
