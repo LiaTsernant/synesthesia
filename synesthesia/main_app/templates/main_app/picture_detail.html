@@ -2,38 +2,17 @@
 {% block content %}
 
 <h1>Picture Details</h1>
-  {% comment %} <div class="row">
-      <div class="col m4 m4">
-
-        {% comment %} The picture card {% endcomment %}
-        {% comment %} <div class="card">
-          <div class="card-image">
-            <img src="{{ picture.link }}">
-          </div>
-          <div class="card-content">
-              <span class="card-title">{{ picture.name }}</span>
-              <p>{{ picture.description }}</p>
-          </div> {% endcomment %}
-          
-          {% comment %} Links for edit and delete picture {% endcomment %}
-          <div class="card-action">
-              <a href="{% url 'pictures_update' picture.name %}">Edit</a>
-              <a href="{% url 'pictures_confirm_delete' picture.name %}">Delete</a>
-          {% comment %} <div class="card-action">
-              <a href="{% url 'pictures_update' picture.id %}">Edit</a>
-              <a href="{% url 'pictures_delete' picture.id %}">Delete</a>
-          </div>
-        </div>
+<div class="row">
+  <div class="col-md-5 mt-4">
+    <div class="card" id="picture_detail">
+      <img src="{{picture.link}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{picture.name}}</h5>
+        <p class="card-text">{{picture.description}}</p>
+        <a href="{% url 'pictures_update' picture.name %}" class="btn btn-primary box">EDIT</a>
+        <a href="{% url 'pictures_confirm_delete' picture.name %}" class="btn btn-primary box">Delete</a>
       </div>
-  </div> {% endcomment %}
-
-<div class="card" style="width: 18rem;">
-  <img src="{{picture.link}}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{picture.name}}</h5>
-    <p class="card-text">{{picture.description}}</p>
-    <a href="#" class="btn btn-primary">EDIT</a>
+    </div>
   </div>
 </div>
-
 {% endblock %}

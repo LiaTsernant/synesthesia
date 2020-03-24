@@ -116,7 +116,7 @@ def delete_art(request, art_name):
     if request.method == 'POST':
         art = Picture.objects.filter(name__contains=art_name).first()
         art.delete()
-    return redirect('about')
+    return redirect('pictures_index')
 
 # ---------------------------------------------------------------------------------------------------- Authorization
 

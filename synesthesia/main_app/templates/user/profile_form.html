@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-{% comment %} Display error or success smessage {% endcomment %}
+  <h1> Profile</h1>
   {% if error_message %}
-    <h5 class="red-text">{{ error_message }}</h5>
+    <h5 class="text-danger mt-3">{{ error_message }}</h5>
   {% else %}
-      <h5 class="red-text">{{ success_message }}</h5>
+    <h5 class="text-danger mt-3">{{ success_message }}</h5>
   {% endif %}
 
-  {% comment %} Form with data adout User that will be stored in DB {% endcomment %}
-    <form action="" method="POST">
-      {% csrf_token %}
-      <table>
-      {{ form.as_p }}
-      </table>
-      <input type="submit" value="Update Profile" class="btn">
-      <a href="{% url 'confirm_delete_user' user.username %}">Delete Profile</a>
-    </form>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div id="confirm">
+      <div>
+        <input type="submit" value="Update Profile" class="btn btn-primary box">
+        <button class="btn btn-danger box"><a href="{% url 'confirm_delete_user' user.username %}">Delete Profile</a></button>
+      </div>
+    </div>
+  </form>
 {% endblock %}
