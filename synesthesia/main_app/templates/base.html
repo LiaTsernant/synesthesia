@@ -8,56 +8,69 @@
   <title>Synesthesia in Music</title>
   {% comment %} Google Fonts {% endcomment %}
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-  {% comment %} Materialize {% endcomment %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  {% comment %} Bootstrap {% endcomment %}
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   {% comment %} Custom CSS {% endcomment %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-  {% comment %} Materialize JS {% endcomment %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </head>
 <body>
-  <header>
-    <nav class="nav-extended">
-      {% comment %} The logo section with the name of the project {% endcomment %}
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo">Synesthesia</a>
-      </div>
+  <header class="content-container">
+    <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+      <a class="navbar-brand text-white" href="/">Synesthesia</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      {% comment %} Navbar {% endcomment %}
-      <div class="nav-content">
-        <ul class="tabs tabs-transparent">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
           {% if user.is_authenticated %}
-            {% comment %} What AUTHORIZED user can see on navbar {% endcomment %}
-            <li class="tab"><a class="active" href="#">Hello, {{user}}</a></li>
-            <li class="tab"><a href="/about">About</a></li>
-            <li class="tab"><a class="active" href="{% url 'pictures_create' %}">Add art</a></li>
-            <li class="tab disabled"><a href="{% url 'pictures_index' %}">Gallery of art</a></li>
-            <li class="tab"><a href="/notes">Notes</a></li>
-            <li class="tab"><a href="{% url 'profile' user.username%}">Profile</a></li>
+          {% comment %} What AUTHORIZED user can see on navbar {% endcomment %}
+          <li class="tab"><a class="active" href="#">Hello, {{user}}</a></li>
+          <li class="tab"><a href="/about"> About </a></li>
+          <li class="tab"><a class="active" href="{% url 'pictures_create' %}"> Add art </a></li>
+          <li class="tab disabled"><a href="{% url 'pictures_index' %}"> Art Gallery </a></li>
+          <li class="tab"><a href="/notes"> Notes </a></li>
+          <li class="tab"><a href="{% url 'profile' user.username%}"> Profile </a></li>
 
-            <li class="tab"><a href="{% url 'logout' %}">Log Out</a></li>
+          <li class="tab"><a href="{% url 'logout' %}"> Log Out </a></li>
           {% else %}
-            {% comment %} What NOT AUTHORIZED user can see on navbar {% endcomment %}
-            <li class="tab"><a href="/about">About</a></li>
-            <li class="tab disabled"><a href="{% url 'pictures_index' %}">Gallery of art</a></li>
-            <li class="tab"><a href="/notes">Notes</a></li>
-            <li class="tab"><a href="{% url 'login' %}">Log In</a></li>
-            <li class="tab"><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% comment %} What NOT AUTHORIZED user can see on navbar {% endcomment %}
+          <li class="tab"><a href="/about"> About </a></li>
+          <li class="tab disabled"><a href="{% url 'pictures_index' %}"> Art Gallery </a></li>
+          <li class="tab"><a href="/notes"> Notes </a></li>
+          <li class="tab"><a href="{% url 'login' %}"> Log In </a></li>
+          <li class="tab"><a href="{% url 'signup' %}"> Sign Up </a></li>
           {% endif %}
         </ul>
       </div>
     </nav>
   </header>
-  
+
   {% comment %} The main section with all details {% endcomment %}
   <main class="container">
       {% block content %}
+      
       {% endblock %}
   </main>
 
   {% comment %} Footer add your names for the project 2, please {% endcomment %}
-  <footer class="page-footer orange darken-4">
-    <div class="copyright">Lia Tsernant,  &copy; 2020 Synesthesia in Music &nbsp;</div>
+  <footer>
+    <div id="copyright">© 2020 Synesthesia in Music</div>
   </footer>
+
+{% comment %} Bootstrap JS {% endcomment %}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+  let emailfield = getElementById('id_username')
+  emailfield.addAttribute('type', 'email')
+  emailfield.addAttribute('class', 'form-control')
+  emailfield.addAttribute('id', 'exampleInputEmail')
+  emailfield.addAttribute('area-describedby', 'emailHelp')
+</script>
+
 </body>
 </html>

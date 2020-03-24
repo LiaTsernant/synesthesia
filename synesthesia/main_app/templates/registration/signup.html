@@ -8,9 +8,7 @@
 {% comment %} Form with user's data to signup {% endcomment %}
 <form method="post" action="{% url 'signup' %}">
   {% csrf_token %}
-  {% comment %} {{ user_form.as_p }} {% endcomment %}
   {% for field in user_form %}
-    <div class="fieldWrapper">
       {% for error in  field.errors%}
         <p class="error">{{ error }}</p>
       {% endfor %}
@@ -21,7 +19,7 @@
         {% endif %}
     </div>
 {% endfor %}
-  <input type="submit" class="btn" value="signup">
+  <input type="submit" class="btn btn-primary box" value="signup">
 </form>
 
 {% endblock content %}
