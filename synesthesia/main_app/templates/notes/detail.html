@@ -3,44 +3,50 @@
 {% load main_app_extras %}
 {% block content %}
 
-<h1> Note Detail</h1>
+<div class="container mt-5 mb-5">
+  <h1> Note Detail</h1>
+</div>
 
 {% comment %} Main section of the page {% endcomment %}
-{% comment %} <div class="row">
-
     {% comment %} Note Details {% endcomment %}
-    <div class="col s6">
-        <div class="card {{ note.color }} lighten-3">
-            <div class="card-content">
+  <div class="row">
+    <div class="col-6">
+      <div class="container"></div>
+        <div class="card mb-3 {{ note.color }} lighten-3">
+            <div class="card-body">
               <span class="card-title">{{ note.name }}</span>
               <p>Color: {{ note.color }}</p>
               <p>Description: {{ note.description }}</p>
               <p>Number: {{ note.number }}</p>
             </div>
+
+            {% comment %} HTML audio player {% endcomment %}
+            <audio controls id="audio">
+                {% with "/audio/"|addstr:note.number|addstr:".mp3" as audio_static %}
+                <source src="{% static audio_static %}" type="audio/mp3">
+                {% endwith %}
+                Your browser does not support the audio element.
+            </audio>
         </div>
 
-        {% comment %} HTML audio player {% endcomment %}
-        <audio controls id="audio">
-            {% with "/audio/"|addstr:note.number|addstr:".mp3" as audio_static %}
-            <source src="{% static audio_static %}" type="audio/mp3">
-            {% endwith %}
-            Your browser does not support the audio element.
-        </audio>
-
-        {% comment %} Guest (Person) name and color {% endcomment %}
+        
+    {% comment %} Guest (Person) name and color {% endcomment %}
         <h5>What color associates with this sound?</h5>
         <p>Add your name and your association</p>
     </div>
 
   {% comment %} Form with a color to submit {% endcomment %}
-  <div class="col s6">
-    <form action="{% url 'add_person' note.id %}" method="post">
-        {% csrf_token %}
-        {{ person_form.as_p }}
-        <input type="submit" class="btn" value="Add Color">
-    </form>
+  
+        <div class="col-6">
+        <form action="{% url 'add_person' note.id %}" method="post">
+          <div id="formCtr" class="form-group">
+            {% csrf_token %}
+            {{ person_form.as_p }}
+            <input id="detailAddColor" type="submit" class="btn" value="Add Color">
+          </div>
+        </form>
 
-    {% comment %} User name and associated color will appear in this section {% endcomment %}    
+        {% comment %} User name and associated color will appear in this section {% endcomment %}    
     <table class="striped">
         <thead>
             <tr><th>Your name</th><th>Associated color</th></tr>
@@ -54,13 +60,19 @@
             {% endfor %}
         </tbody>
     </table>
+        </div>
+      <!-- </div> -->
+  <!-- </div> -->
+
+    
+
   </div>
-</div>
+  </div>
 
 <hr>
 
 {% comment %} Section for already associated art {% endcomment %}
-<div class="row">
+<div class="row mt-s">
   <div class="col s6">
     <h4>Associated art with {{ note.name }} note:</h4>
     {% if note.pictures.count %}

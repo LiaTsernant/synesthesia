@@ -3,7 +3,7 @@
 <h1>Log In<h1>
 
  
-<form method="post" action="{% url 'login' %}">
+<form id="loginSignup" method="post" action="{% url 'login' %}">
   <div class="form-group">
   {% csrf_token %}
   {{ form.as_p }}

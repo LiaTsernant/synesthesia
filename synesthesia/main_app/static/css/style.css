@@ -1,4 +1,3 @@
-
 body {
   min-height: 100vh;
   width: 100%;
@@ -34,6 +33,46 @@ nav a {
   text-decoration: none;
 }
 
+
+.welcome{
+  animation-delay: 1s;
+  margin-top: 3rem;
+}
+
+
+.spanSyn{
+  background: -webkit-linear-gradient(
+    260deg, #2376ae 0%, #c16ecf 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.mainText{
+  line-height: 2;
+}
+
+.callToAction{
+  text-shadow: 0px 4px 10px #c16ecf;
+}
+
+#detailAddColor{
+  background-color: #c16ecf;
+}
+.jumbotron{
+  position: relative;
+}
+#formCtr{
+  
+  border: blue 2px solid;
+}
+#id_color{
+  border-radius: .5rem;
+  max-width: 15%;
+  border: rgb(154, 255, 71) 2px solid;
+}
+
 /* FOOTER */
 footer {
   flex: 0 0 auto;
@@ -57,7 +96,7 @@ footer {
   flex-direction: row;
 }
 
-form {
+form > #loginSignup {
   margin-top: 50px;
 }
 
