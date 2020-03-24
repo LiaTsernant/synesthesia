@@ -1,0 +1,85 @@
+[
+    {
+        "model": "main_app.note",
+        "pk": 1,
+        "fields": {
+            "name": "C(Do)",
+            "color": "brown",
+            "description": "First of 7 notes",
+            "number": 1,
+            "pictures": []
+        }
+    },
+
+    {
+        "model": "main_app.note",
+        "pk": 2,
+        "fields": {
+            "name": "D(Re)",
+            "color": "green",
+            "description": "Second of 7 notes",
+            "number": 2,
+            "pictures": []
+        }
+    }, 
+
+    {
+        "model": "main_app.note",
+        "pk": 3,
+        "fields": {
+            "name": "E(Mi)",
+            "color": "red",
+            "description": "Third of 7 notes",
+            "number": 3,
+            "pictures": []
+        }
+    },
+
+    {
+        "model": "main_app.note",
+        "pk": 4,
+        "fields": {
+            "name": "F(Fa)",
+            "color": "yellow",
+            "description": "Fourth of 7 notes",
+            "number": 4,
+            "pictures": []
+        }
+    },
+
+    {
+        "model": "main_app.note",
+        "pk": 5,
+        "fields": {
+            "name": "G(Sol)",
+            "color": "blue",
+            "description": "Fifth of 7 notes",
+            "number": 5,
+            "pictures": []
+        }
+    },
+
+    {
+        "model": "main_app.note",
+        "pk": 6,
+        "fields": {
+            "name": "A(La)",
+            "color": "orange",
+            "description": "Sixth of 7 notes",
+            "number": 6,
+            "pictures": []
+        }
+    }, 
+
+    {
+        "model": "main_app.note",
+        "pk": 7,
+        "fields": {
+            "name": "H(Si)",
+            "color": "gray",
+            "description": "Seventh of 7 notes",
+            "number": 7,
+            "pictures": []
+        }
+    }
+]

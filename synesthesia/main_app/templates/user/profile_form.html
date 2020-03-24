@@ -11,8 +11,7 @@
     <form action="" method="POST">
       {% csrf_token %}
       <table>
-
-      {{ form.as_table }}
+      {{ form.as_p }}
       </table>
       <input type="submit" value="Update Profile" class="btn">
       <a href="{% url 'confirm_delete_user' user.username %}">Delete Profile</a>
