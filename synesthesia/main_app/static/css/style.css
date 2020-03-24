@@ -39,6 +39,7 @@ nav a {
   margin-top: 3rem;
 }
 
+
 .spanSyn{
   background: -webkit-linear-gradient(
     260deg, #2376ae 0%, #c16ecf 100%
@@ -53,7 +54,23 @@ nav a {
 }
 
 .callToAction{
-  text-shadow: 1px 1px 12px #c16ecf;
+  text-shadow: 0px 4px 10px #c16ecf;
+}
+
+#detailAddColor{
+  background-color: #c16ecf;
+}
+.jumbotron{
+  position: relative;
+}
+#formCtr{
+  
+  border: blue 2px solid;
+}
+#id_color{
+  border-radius: .5rem;
+  max-width: 15%;
+  border: rgb(154, 255, 71) 2px solid;
 }
 
 /* FOOTER */
@@ -79,7 +96,7 @@ footer {
   flex-direction: row;
 }
 
-form {
+form > #loginSignup {
   margin-top: 50px;
 }
 
