@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <h1>Notes List</h1>
 
@@ -20,9 +21,10 @@
 {% for note in notes %}
 <a href="{% url 'detail' note.id %}">
   <div class="row d-flex justify-content-center">
-    <div class="col-md-6 mt-5">
+    <div class="col-md-12 mt-5">
       <div class="card-content">
-        <div class="card-body text-body" style="background-color:{{note.color}}">
+        <div class="card-body text-body" >
+        <img src="{% static note.background %}" >
             <span class="card-title">{{note.name}}</span>
             <p>Color: {{ note.color }}</p>
             <p>Description: {{ note.description }}</p>

@@ -5,6 +5,7 @@
         "fields": {
             "name": "C(Do)",
             "color": "brown",
+            "background": "images/brown.png",
             "description": "First of 7 notes",
             "number": 1,
             "pictures": []
@@ -17,6 +18,7 @@
         "fields": {
             "name": "D(Re)",
             "color": "green",
+            "background": "images/green.png", 
             "description": "Second of 7 notes",
             "number": 2,
             "pictures": []
@@ -29,6 +31,7 @@
         "fields": {
             "name": "E(Mi)",
             "color": "red",
+            "background": "images/red.png",
             "description": "Third of 7 notes",
             "number": 3,
             "pictures": []
@@ -41,6 +44,7 @@
         "fields": {
             "name": "F(Fa)",
             "color": "yellow",
+            "background": "images/yellow.png",
             "description": "Fourth of 7 notes",
             "number": 4,
             "pictures": []
@@ -53,6 +57,7 @@
         "fields": {
             "name": "G(Sol)",
             "color": "blue",
+            "background": "images/blue.png",
             "description": "Fifth of 7 notes",
             "number": 5,
             "pictures": []
@@ -65,6 +70,7 @@
         "fields": {
             "name": "A(La)",
             "color": "orange",
+            "background": "images/orange.png",
             "description": "Sixth of 7 notes",
             "number": 6,
             "pictures": []
@@ -77,6 +83,7 @@
         "fields": {
             "name": "H(Si)",
             "color": "gray",
+            "background": "images/gray.png",
             "description": "Seventh of 7 notes",
             "number": 7,
             "pictures": []
