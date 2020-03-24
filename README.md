@@ -1,52 +1,46 @@
 # Synesthesia
 
-## User Story
-As a not authorized user I can see a list of musical notes and their details.
-I can listen a note and write my name and pick a color or art that I associate with the note.
-“Home” and “About” are available for me.
-I can register and login.
+* About the team
 
-As an authorized user I can create my own art and note(?needed to be discussed).
+![About](assets/about.jpg)
 
-## Wireframes
-* Not authorized home page
+### User can:
+* Log in
 
-![Not authorized home page](assets/unauth_home.png)
-
-* About Page
-
-![About Page](/assets/auth_about.png)
-
-* Login
-
-![Login](/assets/login.png)
+![Login](/assets/login.jpg)
 
 * Signup
 
-![Signup](/assets/signup.png)
+![Signup](/assets/signup.jpg)
 
-* All notes List
+* See the profile
 
-![All notes](/assets/notes.png)
+![Signup](/assets/profile.jpg)
 
-* Note Detail
+* See all notes
 
-![All notes](/assets/note_detail.png)
+![Signup](/assets/notes.jpg)
 
-* Associated Art
+* See all gallery
 
-![All notes](/assets/associated_art.png)
+![Signup](/assets/gallery.jpg)
 
-* Gallery
+* Open each art
 
-![All notes](/assets/gallery.png)
+![Signup](/assets/art.jpg)
 
-* Add Picture
+* Open each note
 
-![All notes](/assets/add_picture.png)
+![Signup](/assets/note_detail.jpg)
 
-## ERD
-![ERD](/assets/erd.jpg)
+* Create/ Update / Delete an art
+
+![Signup](/assets/new_art.jpg)
+
+## Next Features:
+
+* API Map with art galleries
+
 
 
 

@@ -80,6 +80,7 @@ def art_detail(request, art_name):
 
 # CREATE picture only if logged in
 # @login_required
+@login_required
 def create_art(request):
     if request.method == 'POST':
         form = ArtForm(request.POST)
@@ -93,6 +94,7 @@ def create_art(request):
         return render(request, 'main_app/picture_form.html', { 'form': form })
 
 # UPDATE picture only if logged in
+@login_required
 def update_art(request, art_name):
     art = Picture.objects.filter(name__contains=art_name).first()
     if request.method == "POST":
@@ -110,6 +112,7 @@ def confirm_delete(request, art_name):
 
 
 # DELETE picture only if logged in
+@login_required
 def delete_art(request, art_name):
     art = Picture.objects.filter(name__contains=art_name).first()
     print(art.name)

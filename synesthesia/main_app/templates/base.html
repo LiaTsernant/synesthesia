@@ -11,6 +11,8 @@
   {% comment %} Bootstrap {% endcomment %}
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  {% comment %} Animate CSS {% endcomment %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
   {% comment %} Custom CSS {% endcomment %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
@@ -19,7 +21,7 @@
   <header class="content-container">
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
       <img id="landingLogo" src="{% static "images/logo.png"%}">
-      <a class="navbar-brand text-white ml-3" href="/">Synesthesia</a>
+      <a class="navbar-brand text-white" href="/">Synesthesia</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,7 +58,6 @@
       {% endblock %}
   </main>
 
-  {% comment %} Footer add your names for the project 2, please {% endcomment %}
   <footer>
     <div id="copyright">© 2020 Synesthesia in Music</div>
   </footer>
