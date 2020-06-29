@@ -14,8 +14,11 @@ Django,
 PostgreSQL,
 HTML5,
 CSS3,
-Bootstrap.
+Materialize CSS.
 
 ## Next Features:
 
 * API Map with art galleries
+
+## Link
+https://synesthesia-project.herokuapp.com/
