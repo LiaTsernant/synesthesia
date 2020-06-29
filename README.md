@@ -1,48 +1,21 @@
 # Synesthesia
 
-* About the team
+## What is Synesthesia?
+Auditory–visual synaesthesia is an unusual form of cross-modal integration in which sounds evoke involuntary visual experiences. 
+For Duke Ellington, a D note looked like dark blue burlap while a G was light blue satin. When Pharrell Williams listened to Earth, Wind & Fire as a kid, he saw burgundy or baby blue. For Kanye West, pianos are blue, snares are white, and basslines are dark brown and purple. Orange is a big one for Frank Ocean.
 
-![About](assets/about.jpg)
-
-### User can:
-* Log in
-
-![Login](/assets/login.jpg)
-
-* Signup
-
-![Signup](/assets/signup.jpg)
-
-* See the profile
-
-![Signup](/assets/profile.jpg)
-
-* See all notes
-
-![Signup](/assets/notes.jpg)
-
-* See all gallery
-
-![Signup](/assets/gallery.jpg)
-
-* Open each art
-
-![Signup](/assets/art.jpg)
-
-* Open each note
+The idea behing this project is combine all main musical notes and let user associate it with ar art or a color.
 
 ![Signup](/assets/note_detail.jpg)
 
-* Create/ Update / Delete an art
-
-![Signup](/assets/new_art.jpg)
+## Technologies Used:
+Python,
+Django,
+PostgreSQL,
+HTML5,
+CSS3,
+Bootstrap.
 
 ## Next Features:
 
 * API Map with art galleries
-
-
-
-
-
-
