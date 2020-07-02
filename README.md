@@ -9,12 +9,12 @@ The idea behing this project is combine all main musical notes and let user asso
 ![Signup](/assets/note_detail.jpg)
 
 ## Technologies Used:
-Python,
-Django,
-PostgreSQL,
-HTML5,
-CSS3,
-Materialize CSS.
+- Python,
+- Django,
+- PostgreSQL,
+- HTML5,
+- CSS3,
+- Materialize CSS
 
 ## Next Features:
 
