@@ -21,4 +21,4 @@ The idea behing this project is combine all main musical notes and let user asso
 * API Map with art galleries
 
 ## Link
-https://synesthesia-project.herokuapp.com/
+<https://synesthesia-project.herokuapp.com/>
